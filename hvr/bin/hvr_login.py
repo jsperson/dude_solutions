@@ -1,8 +1,7 @@
 import requests
+from requests.structures import CaseInsensitiveDict
 import getpass
 import json
-
-from requests.structures import CaseInsensitiveDict
 
 def get_token(url, user, pw):
     headers = CaseInsensitiveDict()
@@ -19,7 +18,8 @@ def get_token(url, user, pw):
     return token
 
 if __name__ == "__main__":
-    url = "http://10.73.26.118:4340/auth/v1/password"
+    import params
+    url = params.hvr_host_url + params.hvr_host_login_path
     user = input('Enter hvrhub username: ')
     pw = getpass.getpass()
     print(get_token(url,user, pw))
